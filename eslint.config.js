@@ -39,5 +39,15 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
     },
+    rules: {
+      // Public TypeScript APIs must declare their parameter and return types.
+      "@typescript-eslint/explicit-module-boundary-types": "error",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        { prefer: "type-imports", fixStyle: "separate-type-imports" },
+      ],
+      quotes: ["error", "single", { avoidEscape: true }],
+      semi: ["error", "always"],
+    },
   },
 ];
