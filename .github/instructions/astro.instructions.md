@@ -11,6 +11,12 @@ Astro handles everything in the UI: pages, layouts, components, routing, and con
 
 ### Component Structure
 
+#### Component Contracts and Comments
+
+- Every reusable component must define and document its `Props` interface. Use TSDoc on each prop when its meaning, default, or accepted values is not obvious.
+- Keep component-level comments focused on intent, accessibility constraints, or non-obvious rendering decisions. Do not comment by paraphrasing markup.
+- Update or remove comments when the component contract or rendering behavior changes.
+
 ```astro
 ---
 // Frontmatter: runs at build time (static output)
@@ -109,8 +115,9 @@ There is no Svelte/React layer. When a page genuinely needs client behaviour, ad
 ## TypeScript
 
 - Use TypeScript for type-safe props
-- Define `Props` interface in frontmatter
+- Define and document a `Props` interface in frontmatter for every reusable component
 - Type component imports and helper return values
+- Format TypeScript with 2-space indentation, single quotes, semicolons, and trailing commas in multiline structures
 - Run `npx astro sync` to (re)generate route/content types before linting or type-checking
 - `.astro` files are type-checked by `npm run typecheck:astro` (which runs `astro sync` then `astro check`), on the classic `typescript` package. The pure TypeScript in `db/`, `src/lib/`, and `src/types/` is type-checked separately by `npm run typecheck` (the native TS 7 compiler, `tsgo`), which does **not** process `.astro` files.
 
